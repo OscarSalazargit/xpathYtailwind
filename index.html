@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper con XPath</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js" defer></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-md max-w-lg w-full">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Web Scraper con XPath</h1>
+        
+        <label class="block text-gray-700 font-medium">URL de la página:</label>
+        <p class="text-sm text-gray-500 italic">Ejemplo : https://www.adidas.es/zapatillas-hombre</p>
+        <input 
+            type="url" id="urlInput" 
+            placeholder="Ej: https://www.adidas.es/zapatillas-hombre" 
+            value="https://www.adidas.es/zapatillas-hombre"
+            required 
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mt-1"
+        >
+
+        <label class="block text-gray-700 font-medium mt-4">Expresión XPath:</label>
+        <p class="text-sm text-gray-500 italic">Ejemplo: //div[@data-testid='primary-price']</p>
+        <p class="text-sm text-gray-500 italic">Ejemplo: //p[@data-testid='product-card-title']</p>
+        <p class="text-sm text-gray-500 italic">Ejemplo: //img[@data-testid='product-card-primary-image']</p>
+        <input 
+            type="text" id="xpathInput" 
+            placeholder="//div[@data-testid='primary-price']" 
+            required 
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mt-1"
+        >
+
+        <button 
+            onclick="scrape()" 
+            class="w-full mt-6 bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-300 flex items-center justify-center"
+        >
+            🔍 Obtener datos
+        </button>
+
+        <div id="alert" class="hidden mt-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-md text-sm">
+            ✔ HTML descargado. Aplicando XPath...
+        </div>
+
+        <div id="output" class="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-md h-64 overflow-y-auto text-sm font-mono">
+            <span class="text-gray-400">Los resultados aparecerán aquí...</span>
+        </div>
+    </div>
+</body>
+</html>
