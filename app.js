@@ -5,6 +5,7 @@ async function scrape() {
     const xpath = document.getElementById('xpathInput').value;
     const output = document.getElementById('output');
     const alertBox = document.getElementById('alert');
+    
 
     output.innerHTML = "<span class='text-gray-400'>Cargando...</span>";
     alertBox.classList.add('hidden');
@@ -19,7 +20,8 @@ async function scrape() {
     }
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+        //const response = await fetch(url);
         if (!response.ok) throw new Error(`Error al descargar el HTML: ${response.status}`);
 
         htmlContent = await response.text();
